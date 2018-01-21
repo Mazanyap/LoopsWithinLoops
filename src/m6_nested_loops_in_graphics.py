@@ -145,8 +145,28 @@ def draw_wall_on_right(rectangle, n, window):
       :type window: rg.RoseWindow
     and n is a small, positive integer.
     """
+
+
+    y = rectangle.get_upper_right_corner().y
+    y2 = rectangle.get_lower_left_corner().y
+
+    for j in range(n):
+        y += rectangle.get_height()
+        y2 += rectangle.get_height()
+        x = rectangle.get_upper_right_corner().x
+        x2 = rectangle.get_lower_left_corner().x
+        for k in range(j + 1):
+            x -= rectangle.get_width()
+            x2 -= rectangle.get_width()
+            corner1 = rg.Point(x, y)
+            corner2 = rg.Point(x2, y2)
+            rectangle1 = rg.Rectangle(corner1, corner2)
+            rectangle1.attach_to(window)
+
+
+    window.render()
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
