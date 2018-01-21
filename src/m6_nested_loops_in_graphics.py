@@ -86,20 +86,26 @@ def draw_L(window, circle, r, c):
         y += r * 2
         x = circle.center.x
         for k in range(3):
-            circle.attach_to(window)
-            circle.center.x += 2 * circle.radius
-        circle.center.y += 2 * circle.radius
+            x += 2 * r
+            center = rg.Point(x, y)
+            circle1 = rg.Circle(center, r)
+            circle1.fill_color = circle.fill_color
+            circle1.attach_to(window)
 
     for j in range(3):
-        for k in range(c):
-            circle.attach_to(window)
-            center = rg.Point(circle.center.x + (2 * k * circle.radius), circle.center.y + (2 * j * circle.radius))
-            circle = rg.Circle(center, circle.radius)
+        y += r * 2
+        x = circle.center.x
+        for k in range(c + 3):
+            x += 2 * r
+            center = rg.Point(x, y)
+            circle2 = rg.Circle(center, r)
+            circle2.fill_color = circle.fill_color
+            circle2.attach_to(window)
 
-
+    window.render()
 
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #     The testing code is already written for you (above).
     # ------------------------------------------------------------------
 
